@@ -1,0 +1,58 @@
+product_sell_prices:
+  Product1: 1000
+  Product2: 200
+  Product3: 500
+
+product_demand:
+  Product1: 12
+  Product2: 4
+  Product3: 2
+
+storage_costs:
+  Product1: 50
+  Product2: 100
+  Product3: 2000
+  byproduct: 5000
+
+discard_costs:
+  Product1: 10
+  Product2: 5
+  Product3: 2
+  byproduct: 30
+
+# To Be Confirmed
+unmet_demand_penalty:
+  Product1: 0
+  Product2: 1000
+  Product3: 10
+
+
+
+# To be verified
+bounds: 
+  - 
+    - 0.1
+    - 200000
+  - 
+    - 0.1
+    - 50000
+  - 
+    - 0.1
+    - 50000
+  - 
+    - 0
+    - 50000
+  - 
+    - 0.2
+    - 1
+  - 
+    - 0.2
+    - 1
+
+opt_params:
+  popsize: 50
+  maxiter: 200
+  mutation: [0.7, 1.2]
+  recombination: 0.8
+  strategy: rand1bin
+  seed: 201213
