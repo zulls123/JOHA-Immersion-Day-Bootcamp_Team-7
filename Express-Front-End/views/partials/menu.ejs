@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pharmaceutical Back-Office Application</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Drawer Styles */
+        .drawer {
+            width: 240px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -240px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .drawer-content {
+            padding: 20px;
+            font-size: 16px;
+
+        }
+
+        .drawer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .drawer li {
+            margin: 10px 0;
+        }
+
+        .drawer a {
+            text-decoration: none;
+            color: slategray;
+        }
+
+        .sub-menu {
+            list-style-type: none;
+            padding-left: 40px;
+            margin-left: 40px;
+            margin-top: 5px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .sub-menu-expanded {
+            max-height: 300px; /* Adjust this value based on submenu content */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #1976d2;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .navbar .title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <span class="material-icons menu-icon" onclick="toggleDrawer()">menu</span>
+        <span class="title">Pharmaceutical Back-Office Application</span>
+    </header>
+
+    <aside id="drawer" class="drawer">
+        <div class="drawer-content">
+            <h3>Menu</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>
+                    <a href="#" id="example-components-toggle">Example Components</a>
+                    <ul id="example-components-submenu" class="sub-menu">
+                        <li><a href="/pie-chart-component">Pie Chart</a></li>
+                        <li><a href="/bar-chart-component">Bar Chart</a></li>
+                        <li><a href="/table-chart-component">Table</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <div id="overlay" class="overlay"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const exampleComponentsToggle = document.getElementById('example-components-toggle');
+            const exampleComponentsSubmenu = document.getElementById('example-components-submenu');
+
+            // Toggle submenu visibility with smooth transition
+            exampleComponentsToggle.addEventListener('click', function(event) {
+                event.preventDefault();
+                if (exampleComponentsSubmenu.classList.contains('sub-menu-expanded')) {
+                    exampleComponentsSubmenu.classList.remove('sub-menu-expanded');
+                } else {
+                    exampleComponentsSubmenu.classList.add('sub-menu-expanded');
+                }
+            });
+
+            // Toggle the drawer open/close
+            function openDrawer() {
+                drawer.style.left = "0";
+                overlay.style.display = "block";
+            }
+
+            function closeDrawer() {
+                drawer.style.left = "-240px";
+                overlay.style.display = "none";
+            }
+
+            function toggleDrawer() {
+                if (drawer.style.left === "0px") {
+                    closeDrawer();
+                } else {
+                    openDrawer();
+                }
+            }
+
+            // Close the drawer when overlay is clicked
+            overlay.addEventListener('click', function() {
+                closeDrawer();
+            });
+
+            // Assign toggleDrawer function to global scope
+            window.toggleDrawer = toggleDrawer;
+        });
+    </script>
+</body>
+</html>
