@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabular Example Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      margin-top: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .table-container {
+      width: 100%;
+      margin-bottom: 20px;
+      overflow-x: auto; /* Allows horizontal scrolling */
+    }
+
+    .table-container table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1000px; /* Set a minimum width for the table to demonstrate scrolling */
+    }
+
+    .table-header {
+      background-color: #f5f5f5;
+    }
+
+    .table-header th {
+      padding: 12px 8px;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .table-cell, .table-header th {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 8px;
+    }
+
+    .table-row:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+    <%- include('../partials/header') %>
+</head>
+<body>
+    <%- include('../partials/menu') %>
+  <div class="container">
+    <h1 class="header">Tabular Example Page</h1>
+    <p class="description">This page provides an example of results displayed in a tabular format.</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr class="table-header">
+            <% headers.forEach(header => { %>
+              <th class="table-cell"><%= header %></th>
+            <% }); %>
+          </tr>
+        </thead>
+        <tbody>
+          <% results.forEach((row, index) => { %>
+            <tr class="table-row">
+              <% headers.forEach((header, idx) => { %>
+                <td class="table-cell"><%= row[header] || '-' %></td>
+              <% }); %>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bar Chart Example Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 250px;
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+    <%- include('../partials/header') %>
+</head>
+<body>
+    <%- include('../partials/menu') %>
+
+  <div class="container">
+    <h1 class="header">Bar Chart Example Page</h1>
+    <p class="description">This page provides an example of results displayed in a bar chart format.</p>
+
+    <section>
+      <figure>
+        <canvas id="barChart"></canvas>
+      </figure>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Define the chart data and options
+      const data = {
+        labels: ['Product 1', 'Product 2', 'Product 3'],
+        datasets: [{
+          label: 'Revenue',
+          data: [12000, 735.7376834293268, 1000],
+          backgroundColor: ['#0033a0', '#0072ce', '#00a3e0']
+        }]
+      };
+
+      const options = {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          title: {
+            display: true,
+            text: 'Product Revenues'
+          }
+        }
+      };
+
+      // Create the chart
+      const ctx = document.getElementById('barChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pie Chart Example Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 25px;
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+    <%- include('../partials/header') %>
+
+</head>
+<body>
+    <%- include('../partials/menu') %>
+  <div class="container">
+    <h1 class="header">Pie Chart Example Page</h1>
+    <p class="description">This page provides an example of results displayed in a pie chart format.</p>
+
+    <section>
+      <figure>
+        <canvas id="pieChart"></canvas>
+      </figure>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Simulated API call (for now, using hardcoded data)
+      const fetchData = () => {
+        return {
+          product1Revenue: 5000,
+          product2Revenue: 10000,
+          product3Revenue: 3000
+        };
+      };
+
+      const result = fetchData();
+      const data = {
+        labels: ['Product 1 Revenue', 'Product 2 Revenue', 'Product 3 Revenue'],
+        datasets: [{
+          data: [result.product1Revenue, result.product2Revenue, result.product3Revenue],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+          hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+        }]
+      };
+
+      // Create the Pie chart
+      const ctx = document.getElementById('pieChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Product Revenues'
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
