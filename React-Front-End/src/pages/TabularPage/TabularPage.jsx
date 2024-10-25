@@ -44,16 +44,7 @@ const TabularPage = () => {
     <>
 
       <Container className="container">
-        <Typography variant="h4" component="h1" gutterBottom className="header">
-          Tabular Example Page
-        </Typography>
-        <Typography variant="body1" className="description">
-          This page provides an example of results displayed in a tabular format.
-        </Typography>
-       
         <Table headers={headers} data={data} />
-    
-
       </Container>
     </>
   );
