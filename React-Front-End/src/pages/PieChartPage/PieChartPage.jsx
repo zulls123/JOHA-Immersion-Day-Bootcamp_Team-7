@@ -30,12 +30,6 @@ const PieChartPage = () => {
 
   return (
     <Container className="container">
-      <Typography variant="h4" component="h1" gutterBottom className="header">
-        Pie Chart Example Page
-      </Typography>
-      <Typography variant="body1" className="description">
-        This page provides an example of results displayed in a pie chart format.
-      </Typography>
       {data.labels && <Pie data={data} />}
     </Container>
   );
