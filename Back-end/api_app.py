@@ -1,5 +1,5 @@
-from fastapi import FastAPI
-import pandas as pd
+from fastapi import FastAPI # type: ignore
+import pandas as pd # type: ignore
 from typing import List
 
 app = FastAPI()
@@ -14,3 +14,4 @@ async def get_data():
     return data.to_dict(orient='records')
 
 # Run the server: You can run the app using `uvicorn main:app --reload`
+
