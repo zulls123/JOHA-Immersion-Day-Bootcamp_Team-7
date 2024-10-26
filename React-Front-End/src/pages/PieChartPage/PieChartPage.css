@@ -1,0 +1,14 @@
+.container {
+    /* Set max-width to maintain responsiveness */
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+/* Create a wrapper div to control aspect ratio */
+.container canvas {
+    /* This maintains a good size for the pie chart while keeping it responsive */
+    width: 100% !important;
+    height: auto !important;
+    max-height: 400px;
+}
